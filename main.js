@@ -44,10 +44,10 @@ function loaded(){
 	alert('hey');
 	if(localStorage.getItem('cards') !== null){
 		var parsed = JSON.parse(localStorage.getItem('cards'));
-		var a = parsed.map(function(e){
-			return e;
+		console.log(parsed);
+		parsed.map(function(e){
+			appendCard(e);
 		})
-		console.log(a);
 		
 	};
 };
