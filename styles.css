@@ -1,0 +1,151 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  background-color: #312A30;
+  /*margin: -8px;]*/
+  height: 92px;
+}
+
+.title-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 40px;
+  padding-top: 1rem;
+
+}
+
+h1 {
+  margin-right: 4em;
+  font-weight: 800;
+}
+
+header
+.title1 {
+  color: #ADA6CA;
+  margin-right: 5px;
+}
+
+header
+#title2 {
+  color: #ffffff;
+}
+
+.search-and-icon {
+  display: flex;
+  font-size: 31px;
+  margin-top: 1px;
+}
+
+.search-icon {
+  width: 267px;
+  /*height: 27px;*/
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-style: solid;
+  border-color: #ACAAB5;
+  font-size: 25px;
+  color: #ACAAB5;
+
+}
+
+.fa-search {
+  background-color: #ACAAB5;
+  color: #ffffff;
+  margin-left: -4px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 7px 5px 5px 8px;
+}
+
+main {
+  background-color: #EEF2F2;
+  margin: -8px;
+  padding: 33px 1px;
+
+}
+
+form {
+  margin: 0px 312px;
+}
+
+.top-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.inputText {
+  margin: 5px;
+  font-size: 21px;
+}
+
+#title {
+  height: 45px;
+}
+.bottom-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+
+main
+form
+.inputnumber1 {
+  margin: 5px;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: #ACAAB5;
+  width: 93%;
+}
+
+
+#body {
+  height: 128px;
+}
+
+#savebtn {
+  height: 52px;
+  width: 93%;
+  border-radius: 8px;
+  border-style: solid;
+  background-color: #6E646B;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.savebtn:disabled {
+  background-color: #939598;
+}
+
+section {
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+article {
+  border-style: solid;
+  border-color: #ACAAB5;
+  height: 13rem;
+  width: 93%;
+}
+
+.bottomText {
+  display: flex;
+  flew
+}
+
+h4 {
+  color: #6E646B;
+}
