@@ -7,7 +7,8 @@ class Idea{
 
 	}
 	saveToStorage(ideasCollection){
-		localStorage.setItem('cards',ideasCollection);
+		
+		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 	}
 	deleteFromStorage(){
 
