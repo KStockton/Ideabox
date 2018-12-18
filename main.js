@@ -2,7 +2,7 @@ var title = document.querySelector('#title');
 var body = document.querySelector('#body');
 var saveButton = document.querySelector('#savebtn');
 var bottomSection = document.querySelector('.bottom-section');
-var ideasCollection = [];
+var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
 
 
@@ -36,6 +36,26 @@ function appendCard(idea){
       	// bottomSection.innerHTML += card;
        bottomSection.insertAdjacentHTML('afterend',card);
 }
+
+
+window.onload = loaded;
+
+function loaded(){
+	alert('hey');
+	if(localStorage.getItem('cards') !== null){
+		var parsed = JSON.parse(localStorage.getItem('cards'));
+		var a = parsed.map(function(e){
+			return e;
+		})
+		console.log(a);
+		
+	};
+};
+
+
+
+
+
 
 
 
