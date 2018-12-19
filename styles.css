@@ -51,6 +51,7 @@ header
   border-color: #ACAAB5;
   font-size: 25px;
   color: #ACAAB5;
+  padding-left: 13px;
 
 }
 
@@ -90,6 +91,10 @@ form {
   font-size: 30px;
   height: 45px;
 }
+
+#body {
+  font-size: 20px;
+}
 .bottom-form {
   display: flex;
   flex-direction: column;
@@ -105,7 +110,7 @@ form
   border-style: solid;
   border-radius: 8px;
   border-color: #ACAAB5;
-  width: 93%;
+  width: 500px;
 }
 
 
@@ -115,7 +120,7 @@ form
 
 #savebtn {
   height: 52px;
-  width: 93%;
+  width: 500px;
   border-radius: 8px;
   border-style: solid;
   background-color: #6E646B;
@@ -131,20 +136,33 @@ form
 section {
   background-color: #fdfdfd;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 43px;
 }
 
 article {
   border-style: solid;
   border-color: #ACAAB5;
   height: 13rem;
-  width: 93%;
+  width: 500px;
+  border-radius: 8px;
+  margin-bottom: 21px;
+  padding-left: 19px;
+  padding-top: 14px;
 }
 
 .bottomText {
   display: flex;
-  flew
+}
+
+.card-title {
+  color: #6E646B;
+}
+.card-body {
+  font-weight: 300;
+  padding-bottom:19px;
 }
 
 h4 {
