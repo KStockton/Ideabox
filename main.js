@@ -18,9 +18,11 @@ function saveReturn(e){
 
 
 function appendCard(idea){
+
 	var card = `<article class="card" id="${idea.id}">
         <h3 class="card-title">${idea.title}</h3>
         <p class="card-body">${idea.body} </p>
+
         <div class="bottomText">
           <i class="fas fa-chevron-circle-up"></i>
           <i class="fas fa-chevron-circle-down"></i>
