@@ -32,20 +32,8 @@ function appendCard(idea){
             <i class="fas fa-times-circle iconstyle"></i>
           </aside>
           </div>
-
-
-	var card = `<article class="card" id="${idea.id}">
-        <h3 class="card-title">${idea.title}</h3>
-        <p class="card-body">${idea.body} </p>
-
-        <div class="bottomText">
-          <i class="fas fa-chevron-circle-up"></i>
-          <i class="fas fa-chevron-circle-down"></i>
-          <h4 class="quality">${idea.quality}</h4>
-          <i class="fas fa-times-circle">x</i>
-          <div>
-
       </article>`;
+
       	bottomSection.innerHTML += card + bottomSection.innerHTML;
        // bottomSection.insertAdjacentHTML('afterend',card);
 }
