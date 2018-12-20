@@ -68,11 +68,12 @@ main {
   background-color: #EEF2F2;
   margin: -8px;
   padding: 33px 1px;
+  display: flex;
 
 }
 
 form {
-  margin: 0px 312px;
+  margin: 0px auto;
 }
 
 .top-form {
@@ -162,9 +163,24 @@ article {
 }
 .card-body {
   font-weight: 300;
-  padding-bottom:19px;
+  padding-bottom: 19px;
+  height: 
+}
+
+.bottom-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.up-down-icons {
+  display: flex;
+  flex-direction: row;
 }
 
 h4 {
   color: #6E646B;
+}
+
+.iconstyle {
+  font-size: 32px;
 }

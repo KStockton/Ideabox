@@ -19,6 +19,21 @@ function saveReturn(e){
 
 function appendCard(idea){
 
+	var card = `<article class="card id">
+        <h2 class="card-title">${idea.title}</h2>
+        <p class="card-body">${idea.body} </p>
+        <div class="bottom-icons">
+          <div class="up-down-icons">
+            <i class="fas fa-chevron-circle-up iconstyle"></i>
+            <i class="fas fa-chevron-circle-down iconstyle"></i>
+            <h4 class="quality">${idea.quality}</h4>
+          </div>
+          <aside class="close-icon">
+            <i class="fas fa-times-circle iconstyle"></i>
+          </aside>
+          </div>
+
+
 	var card = `<article class="card" id="${idea.id}">
         <h3 class="card-title">${idea.title}</h3>
         <p class="card-body">${idea.body} </p>
@@ -29,6 +44,7 @@ function appendCard(idea){
           <h4 class="quality">${idea.quality}</h4>
           <i class="fas fa-times-circle">x</i>
           <div>
+
       </article>`;
       	bottomSection.innerHTML += card + bottomSection.innerHTML;
        // bottomSection.insertAdjacentHTML('afterend',card);
