@@ -1,3 +1,5 @@
+// Step 7 Create the object Idea to create multiple instances of cards. Assign properties to cards.
+// This will allow us to distinguish each card instance from another.
 class Idea{
 	constructor(title,body,quality,id){
 		this.title = title; 
@@ -6,6 +8,7 @@ class Idea{
 		this.id = id || new Date().getTime(); ; 
 
 	}
+	// saveToStorage method takes variable ideasCollection and stringifys cards to set into local storage.
 	saveToStorage(ideasCollection){
 		
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
