@@ -1,4 +1,6 @@
+
 // Step 1 Selects title id and assigns it to variable title
+
 var title = document.querySelector('#title'); 
 // Step 2 Selects body id and assigns it to variable body
 var body = document.querySelector('#body');
@@ -40,12 +42,12 @@ function appendCard(idea){
         <p class="card-body">${idea.body} </p>
         <div class="bottom-icons">
           <div class="up-down-icons">
-            <i class="fas fa-chevron-circle-up iconstyle"></i>
-            <i class="fas fa-chevron-circle-down iconstyle"></i>
+            <button type="submit" id="voted-up"><i class="fas fa-chevron-circle-up iconstyle"></i></button>
+            <button type="submit" id="voted-up"><i class="fas fa-chevron-circle-down iconstyle"></i></button>
             <h4 class="quality">${idea.quality}</h4>
           </div>
           <aside class="close-icon">
-            <i class="fas fa-times-circle iconstyle"></i>
+            <button type="submit" class="close-card"><i class="fas fa-times-circle iconstyle"></i><button>
           </aside>
           </div>
       </article>`;
@@ -71,7 +73,7 @@ function loaded(){
 
 
 function deleteCard(){
-	console.log('hey');
+	// console.log('hey');
 };
 
 

@@ -7,7 +7,6 @@
 
 header {
   background-color: #312A30;
-  /*margin: -8px;]*/
   height: 92px;
 }
 
@@ -44,7 +43,6 @@ header
 
 .search-icon {
   width: 267px;
-  /*height: 27px;*/
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-style: solid;
