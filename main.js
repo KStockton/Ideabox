@@ -4,13 +4,8 @@ var saveButton = document.querySelector('#savebtn');
 var bottomSection = document.querySelector('.bottom-section');
 var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
-
-
-
-
-
-
 saveButton.addEventListener('click',saveReturn);
+bottomSection.addEventListener('click',deleteCard);
 
 function saveReturn(e){
 	event.preventDefault();
@@ -23,6 +18,7 @@ function saveReturn(e){
 
 
 function appendCard(idea){
+
 	var card = `<article class="card id">
         <h2 class="card-title">${idea.title}</h2>
         <p class="card-body">${idea.body} </p>
@@ -36,10 +32,22 @@ function appendCard(idea){
             <i class="fas fa-times-circle iconstyle"></i>
           </aside>
           </div>
-      </article>`;
-      	bottomSection.innerHTML = card + bottomSection.innerHTML;
-       // bottomSection.insertAdjacentHTML('afterend',card);
 
+
+	var card = `<article class="card" id="${idea.id}">
+        <h3 class="card-title">${idea.title}</h3>
+        <p class="card-body">${idea.body} </p>
+
+        <div class="bottomText">
+          <i class="fas fa-chevron-circle-up"></i>
+          <i class="fas fa-chevron-circle-down"></i>
+          <h4 class="quality">${idea.quality}</h4>
+          <i class="fas fa-times-circle">x</i>
+          <div>
+
+      </article>`;
+      	bottomSection.innerHTML += card + bottomSection.innerHTML;
+       // bottomSection.insertAdjacentHTML('afterend',card);
 }
 
 
@@ -56,6 +64,23 @@ function loaded(){
 		
 	};
 };
+
+
+function deleteCard(){
+	console.log('hey');
+};
+
+
+function getIdeaById(id){
+	ideasCollection.forEach(function(e){
+		if(id === e.id){
+			console.log(id);
+		}
+	})
+
+}
+
+getIdeaById(15);
 
 
 

@@ -3,14 +3,15 @@ class Idea{
 		this.title = title; 
 		this.body  = body; 
 		this.quality = quality || "swill";
-		this.id = id; 
+		this.id = id || new Date().getTime(); ; 
 
 	}
 	saveToStorage(ideasCollection){
 		
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 	}
-	deleteFromStorage(){
+	deleteFromStorage(ideasCollection){
+		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 
 	}
 	updateContent(){
