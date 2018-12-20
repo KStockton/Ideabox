@@ -34,7 +34,7 @@ function appendCard(idea){
           </div>
       </article>`;
 
-      	bottomSection.innerHTML += card + bottomSection.innerHTML;
+      	bottomSection.innerHTML = card + bottomSection.innerHTML;
        // bottomSection.insertAdjacentHTML('afterend',card);
 }
 
