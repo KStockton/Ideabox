@@ -115,6 +115,7 @@ form
 
 #body {
   height: 128px;
+  resize: none
 }
 
 #savebtn {
@@ -161,13 +162,24 @@ article {
 }
 .card-body {
   font-weight: 300;
-  padding-bottom: 19px;
-  height: 
+  padding-bottom: 53px;
+  height: 52px;
 }
 
 .bottom-icons {
   display: flex;
   justify-content: space-between;
+}
+
+.upvote1 {
+  width: 35px;
+  margin-right: 14px;
+  margin-left: -6px;
+}
+
+
+.downvote1 {
+  width: 35px;
 }
 
 .up-down-icons {
@@ -177,8 +189,17 @@ article {
 
 h4 {
   color: #6E646B;
+  margin-top: 65px;
+  margin-left: 9px;
+  font-size: 17px;
 }
 
-.iconstyle {
-  font-size: 32px;
+.deleteicon {
+  width: 35px;
+  margin-top: 58px;
+  margin-right: 11px;
 }
+
+/*.iconstyle {
+  font-size: 32px;
+}*/

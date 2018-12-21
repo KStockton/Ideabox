@@ -4,7 +4,7 @@ class Idea{
 	constructor(title,body,quality,id){
 		this.title = title; 
 		this.body  = body; 
-		this.quality = quality || "swill";
+		this.quality = quality || "Quality: Swill";
 		this.id = id || new Date().getTime(); ; 
 
 	}

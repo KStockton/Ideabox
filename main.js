@@ -42,12 +42,12 @@ function appendCard(idea){
         <p class="card-body">${idea.body} </p>
         <div class="bottom-icons">
           <div class="up-down-icons">
-            <button type="submit" id="voted-up"><i class="fas fa-chevron-circle-up iconstyle"></i></button>
-            <button type="submit" id="voted-up"><i class="fas fa-chevron-circle-down iconstyle"></i></button>
+            <img src="images/upvote.svg" class="upvote1">
+            <img src="images/downvote.svg" class="downvote1">
             <h4 class="quality">${idea.quality}</h4>
           </div>
           <aside class="close-icon">
-            <button type="submit" class="close-card"><i class="fas fa-times-circle iconstyle"></i><button>
+            <img src="images/delete.svg" class="deleteicon">
           </aside>
           </div>
       </article>`;
@@ -60,10 +60,8 @@ function appendCard(idea){
 window.onload = loaded;
 
 function loaded(){
-	alert('hey');
 	if(localStorage.getItem('cards') !== null){
 		var parsed = JSON.parse(localStorage.getItem('cards'));
-		// console.log(parsed);
 		parsed.map(function(e){
 			appendCard(e);
 		})
@@ -73,7 +71,6 @@ function loaded(){
 
 
 function deleteCard(){
-	// console.log('hey');
 };
 
 
