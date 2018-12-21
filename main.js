@@ -19,11 +19,12 @@ bottomSection.addEventListener('click',deleteCard);
 // The text fields should be cleared and ready to accept a new idea.
 // The page should not reload.
 // The idea should be persisted. It should still be present upon reloading the page.
+var idea;
 function saveReturn(e){
   // Step 5a prevents auto reloading of page.
 	event.preventDefault();
 	// Step 8 Creates new instance of idea object
-  var idea = new Idea(title.value, body.value);
+  idea = new Idea(title.value, body.value);
 	// Step 10 Calling appendCard function when click event occurs.
   appendCard(idea);
 	// ideaCollections is pushing idea into an array
@@ -37,7 +38,7 @@ function saveReturn(e){
 // Step 9 Create function appendCard to pass an instance called idea (with its properties) and placing it inside of html assignd as card.
 function appendCard(idea){
 
-	var card = `<article class="card id">
+	var card = `<article class="card" id="${idea.id}">
         <h2 class="card-title">${idea.title}</h2>
         <p class="card-body">${idea.body} </p>
         <div class="bottom-icons">
@@ -70,20 +71,51 @@ function loaded(){
 };
 
 
-function deleteCard(){
+
+
+
+function deleteCard(event){
+  // debugger
+  var element = event.target.parentElement.parentElement.parentElement;
+  console.log(element);
+  var id = element.id;
+  var cardToRemove =getIdeaById(id);
+  ideasCollection.splice(cardToRemove,1);
+  element.remove();
+  idea.deleteFromStorage(ideasCollection);
+
+  
+  
+
+
 };
 
 
 function getIdeaById(id){
-	ideasCollection.forEach(function(e){
-		if(id === e.id){
-			console.log(id);
-		}
-	})
+  for(var i=0; i<ideasCollection.length; i++) {
+    if(id == ideasCollection[i].id) {
+      return i;
+    }
+  }
 
-}
 
-getIdeaById(15);
+
+	// var hello = ideasCollection.find(function(e){
+
+
+ //    if(id === e.id){
+ //      debugger
+ //      return e;
+
+ //    }
+ //    debugger
+ //    return hello;
+ //  })
+
+}; 
+
+
+
 
 
 
