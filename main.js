@@ -11,20 +11,28 @@ var bottomSection = document.querySelector('.bottom-section');
 // Step 11 Create ideasCollection variable to equal empty array.
 var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
+ var idea = new Idea(title.value, body.value);
+
+
+
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
 saveButton.addEventListener('click',saveReturn);
-bottomSection.addEventListener('click',deleteCard);
+bottomSection.addEventListener('click',function(event){
+  if(event.target.classList.contains('deleteicon')){
+    deleteCard(event);
+  }
+});
 
 // Step 5 Creating a function for --> new idea with the provided title and body should appear in the idea list.
 // The text fields should be cleared and ready to accept a new idea.
 // The page should not reload.
 // The idea should be persisted. It should still be present upon reloading the page.
-var idea;
+// var idea;
 function saveReturn(e){
   // Step 5a prevents auto reloading of page.
 	event.preventDefault();
 	// Step 8 Creates new instance of idea object
-  idea = new Idea(title.value, body.value);
+  var idea = new Idea(title.value, body.value);
 	// Step 10 Calling appendCard function when click event occurs.
   appendCard(idea);
 	// ideaCollections is pushing idea into an array
@@ -100,19 +108,6 @@ function getIdeaById(id){
 
 
 
-	// var hello = ideasCollection.find(function(e){
-
-
- //    if(id === e.id){
- //      debugger
- //      return e;
-
- //    }
- //    debugger
- //    return hello;
- //  })
-
-}; 
 
 
 
