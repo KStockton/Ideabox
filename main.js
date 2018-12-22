@@ -14,7 +14,8 @@ var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
 
 
- var idea = new Idea(title.value, body.value);
+ 
+ // console.log(idea);
 
 
 
@@ -96,16 +97,24 @@ function loaded(){
 
 function deleteCard(event){
   // debugger
+  var idea = new Idea(title.value, body.value);
   var element = event.target.parentElement.parentElement.parentElement;
   console.log(element);
   var id = element.id;
-  var cardToRemove = getIdeaById(id);
-  console.log(cardToRemove);
-  var index = ideasCollection.indexOf(cardToRemove);
-  console.log(index);
-  console.log(cardToRemove);
-  ideasCollection.splice(index,1);
+  console.log(id);
+  // var cardToRemove = getIdeaById(id);
+  // console.log(cardToRemove);
+  // var index = ideasCollection.indexOf(cardToRemove);
+  // console.log(index);
+  // console.log(cardToRemove);
+  // ideasCollection.splice(index,1);
+  ideasCollection = ideasCollection.filter(function(currentIdea){
+    console.log(currentIdea);
+    return currentIdea.id != id;
+  })
+  
   element.remove();
+  console.log(idea);
   idea.deleteFromStorage(ideasCollection);
 
   
@@ -123,6 +132,7 @@ function getIdeaById(id){
   }};
 
   function editCard(event){
+    var idea = new Idea(title.value, body.value);
 
     
     event.target.contentEditable = true;
@@ -131,12 +141,13 @@ function getIdeaById(id){
   var id = element.id;
   console.log(id);
   var idea = getIdeaById(id);
-  console.log(idea + "yoyo")
+  
   
   var index = ideasCollection.indexOf(idea);
-  console.log(index);
+  
   idea.updateContent(event.target.innerText,"title");
-  console.log(idea.updateContent(event.target.innerText,"title") + "hey");
+
+  
     };
   
 
