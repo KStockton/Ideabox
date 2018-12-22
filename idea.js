@@ -14,6 +14,7 @@ class Idea{
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 	}
 	deleteFromStorage(ideasCollection){
+		console.log('hey');
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 
 	}
