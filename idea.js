@@ -17,7 +17,15 @@ class Idea{
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 
 	}
-	updateContent(){
+	updateContent(newText,type){
+		if(type === 'title'){
+			this.title = newText;
+			saveToStorage(ideasCollection);
+		} else if(type === 'body'){
+			this.body = newText;
+			saveToStorage(ideasCollection);
+		}
+
 
 	}
 	updateQuality(){
