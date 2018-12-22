@@ -11,15 +11,25 @@ var bottomSection = document.querySelector('.bottom-section');
 // Step 11 Create ideasCollection variable to equal empty array.
 var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
+
+
+
  var idea = new Idea(title.value, body.value);
+
 
 
 
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
 saveButton.addEventListener('click',saveReturn);
 bottomSection.addEventListener('click',function(event){
+
+  if(event.target.classList.contains('card-title')){
+
+    editCard(event);
+  }
   if(event.target.classList.contains('deleteicon')){
     deleteCard(event);
+
   }
 });
 
@@ -89,9 +99,12 @@ function deleteCard(event){
   var element = event.target.parentElement.parentElement.parentElement;
   console.log(element);
   var id = element.id;
-  var cardToRemove =getIdeaById(id);
+  var cardToRemove = getIdeaById(id);
   console.log(cardToRemove);
-  ideasCollection.splice(cardToRemove,1);
+  var index = ideasCollection.indexOf(cardToRemove);
+  console.log(index);
+  console.log(cardToRemove);
+  ideasCollection.splice(index,1);
   element.remove();
   idea.deleteFromStorage(ideasCollection);
 
@@ -105,9 +118,30 @@ function deleteCard(event){
 function getIdeaById(id){
   for(var i=0; i<ideasCollection.length; i++) {
     if(id == ideasCollection[i].id) {
-      return i;
+      return ideasCollection[i];
     }
   }};
+
+  function editCard(event){
+
+    
+    event.target.contentEditable = true;
+      var element = event.target.parentElement;
+  console.log(element);
+  var id = element.id;
+  console.log(id);
+  var idea = getIdeaById(id);
+  console.log(idea + "yoyo")
+  
+  var index = ideasCollection.indexOf(idea);
+  console.log(index);
+  idea.updateContent(event.target.innerText,"title");
+  console.log(idea.updateContent(event.target.innerText,"title") + "hey");
+    };
+  
+
+
+
 
 
 
