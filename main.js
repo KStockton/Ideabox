@@ -23,6 +23,8 @@ bottomSection.addEventListener('click',function(event){
   }
 });
 
+
+
 // Step 5 Creating a function for --> new idea with the provided title and body should appear in the idea list.
 // The text fields should be cleared and ready to accept a new idea.
 // The page should not reload.
@@ -88,6 +90,7 @@ function deleteCard(event){
   console.log(element);
   var id = element.id;
   var cardToRemove =getIdeaById(id);
+  console.log(cardToRemove);
   ideasCollection.splice(cardToRemove,1);
   element.remove();
   idea.deleteFromStorage(ideasCollection);
@@ -104,7 +107,10 @@ function getIdeaById(id){
     if(id == ideasCollection[i].id) {
       return i;
     }
-  }
+  }};
+
+
+
 
 
 
