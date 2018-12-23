@@ -11,6 +11,8 @@ var bottomSection = document.querySelector('.bottom-section');
 // Step 11 Create ideasCollection variable to equal empty array.
 var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
+// var idea = new Idea(title.value, body.value);
+
 
 
 
@@ -23,12 +25,15 @@ var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
 saveButton.addEventListener('click',saveReturn);
 bottomSection.addEventListener('click',function(event){
+  var target = event.target.classList
+  if(target.contains('card-title')){
 
-  if(event.target.classList.contains('card-title')){
-
-    editCard(event);
+    editCard(event,"title");
+  } 
+  if(target.contains('card-body')){
+    editCard(event,"body");
   }
-  if(event.target.classList.contains('deleteicon')){
+  if(target.contains('deleteicon')){
     deleteCard(event);
 
   }
@@ -102,53 +107,44 @@ function deleteCard(event){
   console.log(element);
   var id = element.id;
   console.log(id);
-  // var cardToRemove = getIdeaById(id);
-  // console.log(cardToRemove);
-  // var index = ideasCollection.indexOf(cardToRemove);
-  // console.log(index);
-  // console.log(cardToRemove);
-  // ideasCollection.splice(index,1);
-  ideasCollection = ideasCollection.filter(function(currentIdea){
-    console.log(currentIdea);
-    return currentIdea.id != id;
-  })
+  var cardToRemove = getIdeaById(id);
+  
+  var index = ideasCollection.indexOf(cardToRemove);
+  
+  ideasCollection.splice(index,1);
+  
   
   element.remove();
-  console.log(idea);
+
   idea.deleteFromStorage(ideasCollection);
-
-  
-  
-
-
 };
 
 
 function getIdeaById(id){
   for(var i=0; i<ideasCollection.length; i++) {
     if(id == ideasCollection[i].id) {
+
       return ideasCollection[i];
     }
-  }};
+  }
+};
 
-  function editCard(event){
-    var idea = new Idea(title.value, body.value);
 
-    
-    event.target.contentEditable = true;
-      var element = event.target.parentElement;
-  console.log(element);
-  var id = element.id;
-  console.log(id);
-  var idea = getIdeaById(id);
+function editCard(event,target) {
+  event.target.contentEditable = true;
   
-  
-  var index = ideasCollection.indexOf(idea);
-  
-  idea.updateContent(event.target.innerText,"title");
+  var id = event.target.parentElement.id;
+  var currentIdea = getIdeaById(id);
 
+  if (target === "title") {
+    currentIdea.title = event.target.innerText;
+  } else if(target === "body") {
+    currentIdea.body = event.target.innerText;
+  }
   
-    };
+  var idea = new Idea();
+  idea.updateContent(ideasCollection) 
+};
   
 
 
