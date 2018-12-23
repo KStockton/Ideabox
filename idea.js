@@ -14,18 +14,12 @@ class Idea{
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 	}
 	deleteFromStorage(ideasCollection){
-		console.log('hey');
+
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 
 	}
-	updateContent(newText,type){
-		if(type === 'title'){
-			this.title = newText;
-			saveToStorage(ideasCollection);
-		} else if(type === 'body'){
-			this.body = newText;
-			saveToStorage(ideasCollection);
-		}
+	updateContent(ideasCollection){
+		localStorage.setItem('cards',JSON.stringify(ideasCollection));
 
 
 	}
