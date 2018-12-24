@@ -5,18 +5,22 @@ class Idea {
 		this.title = title; 
 		this.body  = body; 
 		this.quality = quality || "Swill";
-		this.id = id || new Date().getTime(); ; 
+		this.id = id || new Date().getTime(); 
 
 	}
 	// saveToStorage method takes variable ideasCollection and stringifys cards to set into local storage.
 	saveToStorage(ideasCollection) {
 		localStorage.setItem('cards', JSON.stringify(ideasCollection));
 	}
-	deleteFromStorage(ideasCollection) {
-		localStorage.setItem('cards', JSON.stringify(ideasCollection));
-	}
-	updateContent(ideasCollection) {
-		localStorage.setItem('cards', JSON.stringify(ideasCollection));
+
+	deleteFromStorage(ideasCollection){
+		localStorage.setItem('cards',JSON.stringify(ideasCollection));
+  }
+	updateContent(){
+		
+
+
+
 	}
 	updateQuality() {
 		

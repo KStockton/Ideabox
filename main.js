@@ -13,17 +13,33 @@ var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 saveButton.addEventListener('click',saveReturn);
 bottomSection.addEventListener('click',function(event){
   var target = event.target.classList
-  if(target.contains('card-title')){
+  if(target.contains('editable')){
 
-    editCard(event,"title");
+    return editCard(event);
   } 
-  if(target.contains('card-body')){
-    editCard(event,"body");
-  }
+  
   if(target.contains('deleteicon')){
-    deleteCard(event);
+    return deleteCard(event);
 
+  }else{
+    var cardsOnPage = Array.from(document.querySelectorAll('.card')); 
+    var cardsInfo = cardsOnPage.map(function(elem){
+      var cardInfoObj = {
+        title: elem.children[0].innerText, 
+        body: elem.children[1].innerText, 
+        id:elem.id, 
+        quality:elem.children[2].children[0].children[2].innerText
+      }
+      return cardInfoObj;
+    })
+
+    cardsInfo.reverse()
+    console.log('hey');
+
+    localStorage.setItem('cards',JSON.stringify(cardsInfo));
+    
   }
+
 });
 // Step 5 Creating a function for --> new idea with the provided title and body should appear in the idea list.
 // The text fields should be cleared and ready to accept a new idea.
@@ -48,16 +64,16 @@ function saveReturn(e){
 // Step 9 Create function appendCard to pass an instance called idea (with its properties) and placing it inside of html assignd as card.
 function appendCard(idea) {
 
-	var card = 
-      `<article class="card" id="${idea.id}">
-        <h2 class="card-title">${idea.title}</h2>
-        <p class="card-body">${idea.body} </p>
-          <div class="bottom-icons">
-            <div class="up-down-icons">
-              <img src="images/upvote.svg" class="upvote1">
-              <img src="images/downvote.svg" class="downvote1">
-              <h4 class="quality">${idea.quality}</h4>
-            </div>
+
+var card = `<article class="card" id="${idea.id}">
+        <h2 class="card-title editable">${idea.title}</h2>
+        <p class="card-body editable">${idea.body} </p>
+        <div class="bottom-icons">
+          <div class="up-down-icons">
+            <img src="images/upvote.svg" class="upvote1">
+            <img src="images/downvote.svg" class="downvote1">
+            <h4 class="quality">${idea.quality}</h4>
+          </div>
           <aside class="close-icon">
             <img src="images/delete.svg" class="deleteicon">
           </aside>
@@ -85,10 +101,10 @@ function deleteCard(event) {
   var element = event.target.parentElement.parentElement.parentElement;
   console.log(element);
   var id = element.id;
-  console.log(id);
   var cardToRemove = getIdeaById(id);
   
   var index = ideasCollection.indexOf(cardToRemove);
+  console.log(index + "identifier");
   
   ideasCollection.splice(index,1);
   
@@ -106,22 +122,12 @@ function getIdeaById(id) {
   }
 };
 
-
-function editCard(event,target) {
+function editCard(event){
   event.target.contentEditable = true;
-  
-  var id = event.target.parentElement.id;
-  var currentIdea = getIdeaById(id);
+}
 
-  if (target === "title") {
-    currentIdea.title = event.target.innerText;
-  } else if(target === "body") {
-    currentIdea.body = event.target.innerText;
-  }
-  
-  var idea = new Idea();
-  idea.updateContent(ideasCollection) 
-};
+
+
   
 
 
