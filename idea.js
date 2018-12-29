@@ -28,9 +28,8 @@ class Idea{
 	updateQuality(isUpVote){
       if(isUpVote){
        this.upVote++;
-       // console.log(this.upVote++)
-		
-        if(this.quality === "swill"){
+       
+      if(this.quality === "swill"){
           this.quality = "plausible"; 
         }
 
