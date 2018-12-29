@@ -9,7 +9,9 @@ var saveButton = document.querySelector('#savebtn');
 // Step 6 Selects bottom-section class and assigns it to variable bottomSection
 var bottomSection = document.querySelector('.bottom-section');
 // Step 11 Create ideasCollection variable to equal empty array.
-var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
+// var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
+var ideasCollection = [];
+
 
 // var idea = new Idea(title.value, body.value);
 
@@ -24,36 +26,11 @@ var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
 saveButton.addEventListener('click',saveReturn);
-bottomSection.addEventListener('click',function(event){
-  var target = event.target.classList
-  if(target.contains('editable')){
 
-    return editCard(event);
-  } 
-  
-  if(target.contains('deleteicon')){
-    return deleteCard(event);
 
-  }else{
-    var cardsOnPage = Array.from(document.querySelectorAll('.card')); 
-    var cardsInfo = cardsOnPage.map(function(elem){
-      var cardInfoObj = {
-        title: elem.children[0].innerText, 
-        body: elem.children[1].innerText, 
-        id:elem.id, 
-        quality:elem.children[2].children[0].children[2].innerText
-      }
-      return cardInfoObj;
-    })
 
-    cardsInfo.reverse()
-    console.log('hey');
 
-    localStorage.setItem('cards',JSON.stringify(cardsInfo));
-    
-  }
 
-});
 
 
 
@@ -85,7 +62,7 @@ function saveReturn(e){
 function appendCard(idea){
 
 	var card = `<article class="card" id="${idea.id}">
-        <h2 class="card-title editable">${idea.title}</h2>
+        <h2 class="card-title editable title-edit">${idea.title}</h2>
         <p class="card-body editable">${idea.body} </p>
         <div class="bottom-icons">
           <div class="up-down-icons">
@@ -108,10 +85,17 @@ window.onload = loaded;
 
 function loaded(){
 	if(localStorage.getItem('cards') !== null){
-		var parsed = JSON.parse(localStorage.getItem('cards'));
-		parsed.map(function(e){
-			appendCard(e);
-		})
+		ideasCollection = JSON.parse(localStorage.getItem('cards'));
+    console.log(ideasCollection, "heyyy one");
+
+		ideasCollection = ideasCollection.map(function(e){
+      return new Idea(e.title, e.body, e.quality, e.id)
+
+    })
+      console.log(ideasCollection, "heyyy");
+    ideasCollection.forEach(function(e){
+    appendCard(e);
+    })
 		
 	};
 };
@@ -122,13 +106,16 @@ function loaded(){
 
 function deleteCard(event){
   // debugger
-  var idea = new Idea(title.value, body.value);
+  // var idea = new Idea();
+  console.log(idea);
   var element = event.target.parentElement.parentElement.parentElement;
   console.log(element);
   var id = element.id;
-  var cardToRemove = getIdeaById(id);
+  console.log(id + "heyy")
+  var idea = getIdeaById(id);
+  console.log(idea);
   
-  var index = ideasCollection.indexOf(cardToRemove);
+  var index = ideasCollection.indexOf(idea);
   console.log(index + "identifier");
   
   ideasCollection.splice(index,1);
@@ -152,6 +139,54 @@ function getIdeaById(id){
 function editCard(event){
   event.target.contentEditable = true;
 }
+
+bottomSection.addEventListener('click',function(event){
+  if(event.target.classList.contains('upvote1')){
+    
+    upVote(event);
+
+  }else if(event.target.classList.contains('downvote1')){
+    downVote(event);
+  }
+});
+function upVote(event){
+  
+ 
+  var element = event.target.parentElement.parentElement.parentElement;
+ 
+ 
+  var id = element.id;
+  var idea = getIdeaById(id);
+ 
+  
+  var index = ideasCollection.indexOf(idea);
+ 
+  idea.updateQuality(true);
+   
+
+  event.target.nextElementSibling.nextElementSibling.innerText = `${idea.quality}`;
+  idea.saveToStorage(ideasCollection);
+}
+
+function downVote(event){
+ 
+ 
+  var element = event.target.parentElement.parentElement.parentElement;
+ 
+ 
+  var id = element.id;
+  var idea = getIdeaById(id);
+  console.log(idea, "gotccha ya");
+ 
+  
+  var index = ideasCollection.indexOf(idea);
+  console.log(index);
+ 
+  idea.updateQuality(false);
+  event.target.nextElementSibling.innerText = `${idea.quality}`;
+  idea.saveToStorage(ideasCollection);
+}
+
 
 
 
