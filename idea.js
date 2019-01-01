@@ -18,8 +18,12 @@ class Idea {
 	deleteFromStorage(ideasCollection){
 		localStorage.setItem('cards',JSON.stringify(ideasCollection));
   }
-	updateContent(){
-		
+	updateContent(text,type){
+		if(type == "title"){
+			this.title = text;
+		}else if(type == "body"){
+			this.body = text;
+		}
 
 
 
@@ -29,7 +33,7 @@ class Idea {
       if(isUpVote){
        this.upVote++;
        
-      if(this.quality === "swill"){
+    	if(this.quality === "swill"){
           this.quality = "plausible"; 
         }
 
@@ -47,5 +51,5 @@ class Idea {
           this.quality = "swill"; 
         }
       }
-    }
+    }}
 	
