@@ -25,12 +25,35 @@ bottomSection.addEventListener('click',function(event){
 });
 
 bottomSection.addEventListener('click',function(event){
-  if(event.target.classList.contains('editable')){
-    editCard(event);
-  } else if(event.target.classList.contains('deleteicon')){
+   if(event.target.classList.contains('deleteicon')){
     deleteCard(event);
   }
 })
+
+bottomSection.addEventListener('dblclick', editCard);
+
+function editCard() {
+  
+  if (event.target.classList.contains("editable")) {
+     event.target.contentEditable = true;
+     event.target.addEventListener('blur',saveText);
+  }
+}
+
+function saveText() {
+  var id = event.target.parentElement.id;
+  
+  var idea = getIdeaById(id);
+  
+  var index = ideasCollection.indexOf(idea);
+  if (event.target.classList.contains('title-edit')){ 
+    idea.updateContent(event.target.innerText, 'title');
+  } else {
+    idea.updateContent(event.target.innerText, 'body');
+  }
+    // ideas.splice(index, 1);
+    idea.saveToStorage(ideasCollection);
+}
 
 
 
@@ -58,13 +81,11 @@ function saveReturn(e){
 
 // Step 9 Create function appendCard to pass an instance called idea (with its properties) and placing it inside of html assignd as card.
 function appendCard(idea) {
-
-
   var card = `<article class="card" id="${idea.id}">
         <h2 class="card-title editable title-edit">${idea.title}</h2>
 
 
-        <p class="card-body editable">${idea.body} </p>
+        <p class="card-body editable body-edit">${idea.body} </p>
         <div class="bottom-icons">
           <div class="up-down-icons">
             <img src="images/upvote.svg" class="upvote1">
@@ -86,47 +107,20 @@ window.onload = loaded;
 function loaded(){
   if(localStorage.getItem('cards') !== null){
     ideasCollection = JSON.parse(localStorage.getItem('cards'));
-    console.log(ideasCollection, "heyyy one");
+   
 
     ideasCollection = ideasCollection.map(function(e){
-      return new Idea(e.title, e.body, e.quality, e.id)
+     return new Idea(e.title, e.body, e.quality, e.id)
 
-    })
-      console.log(ideasCollection, "heyyy");
+    });
+    console.log(ideasCollection)
+     
     ideasCollection.forEach(function(e){
     appendCard(e);
     })
     
   };
 };
-
-
-
-
-
-
-  
-
-
-function deleteCard(event) {
-
-  var element = event.target.parentElement.parentElement.parentElement;
-  console.log(element);
-  var id = element.id;
-  console.log(id + "heyy")
-  var idea = getIdeaById(id);
-  console.log(idea);
-  
-  var index = ideasCollection.indexOf(idea);
-  console.log(index + "identifier");
-  
-  ideasCollection.splice(index,1);
-  
-  element.remove();
-
-  idea.deleteFromStorage(ideasCollection);
-};
-
 
 function getIdeaById(id) {
   for(var i=0; i<ideasCollection.length; i++) {
@@ -136,47 +130,51 @@ function getIdeaById(id) {
   }
 };
 
-function editCard(event){
-  event.target.contentEditable = true;
-}
+function deleteCard(event) {
+  var element = event.target.parentElement.parentElement.parentElement;
+  console.log(element);
+  var id = element.id;
+  console.log(id + "heyy")
+  var idea = getIdeaById(id);
+  console.log(idea);
+  var index = ideasCollection.indexOf(idea);
+  ideasCollection.splice(index,1);
+  element.remove();
+  idea.deleteFromStorage(ideasCollection);
+};
+
+
+
+
 
 function upVote(event){
-  
- 
   var element = event.target.parentElement.parentElement.parentElement;
- 
- 
   var id = element.id;
   var idea = getIdeaById(id);
- 
-  
   var index = ideasCollection.indexOf(idea);
- 
   idea.updateQuality(true);
-   
-
   event.target.nextElementSibling.nextElementSibling.innerText = `${idea.quality}`;
   idea.saveToStorage(ideasCollection);
 }
 
 function downVote(event){
- 
- 
   var element = event.target.parentElement.parentElement.parentElement;
- 
- 
   var id = element.id;
   var idea = getIdeaById(id);
   console.log(idea, "gotccha ya");
- 
-  
   var index = ideasCollection.indexOf(idea);
   console.log(index);
- 
   idea.updateQuality(false);
   event.target.nextElementSibling.innerText = `${idea.quality}`;
   idea.saveToStorage(ideasCollection);
 }
+
+
+
+
+  
+
+
 
 
 
