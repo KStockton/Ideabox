@@ -12,6 +12,7 @@ var searchInput = document.querySelector('.search-icon');
 var qualitySearchSection = document.querySelector('.quality-search-buttons');
 var showMore = document.querySelector('.show-more');
 var ideasCollection = [];
+console.log(ideasCollection,"original")
 
 
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
@@ -119,19 +120,29 @@ function appendCard(idea) {
 window.onload = loaded;
 
 function loaded(){
+  
+  
   if(localStorage.getItem('cards') !== null){
     ideasCollection = JSON.parse(localStorage.getItem('cards'));
+    console.log(ideasCollection);
    
 
     ideasCollection = ideasCollection.map(function(e){
      return new Idea(e.title, e.body, e.quality, e.id)
 
     });
-    console.log(ideasCollection)
-     
-    ideasCollection.forEach(function(e){
-    appendCard(e);
-    })
+
+     var filtered = ideasCollection.filter(function(e,index){
+      return index < 10;
+      
+     })
+     console.log(filtered,"filter");
+     filtered.forEach(function(e){
+      appendCard(e);
+     })
+    // ideasCollection.forEach(function(e){
+    // appendCard(e);
+    // })
     
   };
 };
@@ -181,6 +192,7 @@ function downVote(event){
   idea.updateQuality(false);
   event.target.nextElementSibling.innerText = `${idea.quality}`;
   idea.saveToStorage(ideasCollection);
+
 }
 
 function search(){
@@ -188,6 +200,7 @@ function search(){
   var filteredIdeas = [];
   bottomSection.innerHTML = "";
   for (var i=0; i<ideasCollection.length; i++){
+    console.log(ideasCollection[i].title, "heyyy");
   if(ideasCollection[i].title.indexOf(text)> -1 || ideasCollection[i].body.indexOf(text)> -1){
   filteredIdeas.push(ideasCollection[i]);
    } 
@@ -226,13 +239,28 @@ function geniusSearch(){
 }
 
 function show(){
-  console.log(showMore.innerText);
-  if(showMore.innerText == "show-more"){
-    showMore.innerText == "show-less";
-  } else if(showMore.inneText == "show-less"){
-    showMore.innerText == "show-more";
+  
+  console.log(showMore.innerHTML);
+  if(showMore.innerHTML == "show-more"){
+
+    showMore.innerHTML = "show-less";
+    bottomSection.innerHTML = "";
+    ideasCollection.forEach(function(e){
+    appendCard(e);
+    })
+  } else if(showMore.innerHTML == "show-less"){
+    showMore.innerHTML = "show-more";
+    bottomSection.innerHTML = "";
+    var filtered = ideasCollection.filter(function(e,index){
+      return index < 10;
+      
+     })
+     filtered.forEach(function(e){
+      appendCard(e);
+     });
+    
   }
-}
+};
     
 
 
