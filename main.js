@@ -136,6 +136,7 @@ function loaded(){
       return index < 10;
       
      })
+     console.log(filtered,"filter");
      filtered.forEach(function(e){
       appendCard(e);
      })
