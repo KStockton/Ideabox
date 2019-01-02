@@ -25,9 +25,7 @@ class Idea {
 			this.body = text;
 		}
 
-
-
-	}
+};
 
 	updateQuality(isUpVote){
       if(isUpVote){
@@ -51,5 +49,7 @@ class Idea {
           this.quality = "swill"; 
         }
       }
-    }}
+    }
+    
+}
 	
