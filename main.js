@@ -10,6 +10,7 @@ var bottomSection = document.querySelector('.bottom-section');
 // var ideasCollection = JSON.parse(localStorage.getItem('cards')) || [];
 var searchInput = document.querySelector('.search-icon');
 var qualitySearchSection = document.querySelector('.quality-search-buttons');
+var showMore = document.querySelector('.show-more');
 var ideasCollection = [];
 
 
@@ -42,6 +43,8 @@ qualitySearchSection.addEventListener('click',function(event){
     geniusSearch();
   }
 })
+
+showMore.addEventListener('click',show);
 
 function editCard() {
   
@@ -220,6 +223,15 @@ function geniusSearch(){
   geniusIdeas.forEach(function(e){
     appendCard(e);
   })
+}
+
+function show(){
+  console.log(showMore.innerText);
+  if(showMore.innerText == "show-more"){
+    showMore.innerText == "show-less";
+  } else if(showMore.inneText == "show-less"){
+    showMore.innerText == "show-more";
+  }
 }
     
 
