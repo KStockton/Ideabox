@@ -12,7 +12,7 @@ var searchInput = document.querySelector('.search-icon');
 var qualitySearchSection = document.querySelector('.quality-search-buttons');
 var showMore = document.querySelector('.show-more');
 var ideasCollection = [];
-console.log(ideasCollection,"original")
+
 
 
 // Step 4 Add an event listener to saveButton variable (saveReturn not defined yet) 
@@ -124,7 +124,7 @@ function loaded(){
   
   if(localStorage.getItem('cards') !== null){
     ideasCollection = JSON.parse(localStorage.getItem('cards'));
-    console.log(ideasCollection);
+    
    
 
     ideasCollection = ideasCollection.map(function(e){
@@ -132,14 +132,14 @@ function loaded(){
 
     });
 
-     var filtered = ideasCollection.filter(function(e,index){
-      return index < 10;
-      
-     })
-     console.log(filtered,"filter");
+     var filtered = ideasCollection.slice(-10);
+     console.log(filtered, "slice")
+     
      filtered.forEach(function(e){
-      appendCard(e);
-     })
+
+       appendCard(e);
+     });
+
     // ideasCollection.forEach(function(e){
     // appendCard(e);
     // })
@@ -161,7 +161,7 @@ function deleteCard(event) {
   var id = element.id;
   console.log(id + "heyy")
   var idea = getIdeaById(id);
-  console.log(idea);
+
   var index = ideasCollection.indexOf(idea);
   ideasCollection.splice(index,1);
   element.remove();
@@ -240,28 +240,38 @@ function geniusSearch(){
 
 function show(){
   
-  console.log(showMore.innerHTML);
+  
   if(showMore.innerHTML == "show-more"){
 
     showMore.innerHTML = "show-less";
     bottomSection.innerHTML = "";
+
     ideasCollection.forEach(function(e){
     appendCard(e);
     })
-  } else if(showMore.innerHTML == "show-less"){
+    } 
+
+
+
+    else if(showMore.innerHTML == "show-less"){
     showMore.innerHTML = "show-more";
     bottomSection.innerHTML = "";
-    var filtered = ideasCollection.filter(function(e,index){
-      return index < 10;
-      
-     })
+    var filtered = ideasCollection.slice(-10);
+     console.log(filtered, "slice")
+     
      filtered.forEach(function(e){
-      appendCard(e);
-     });
+
+       appendCard(e);
     
-  }
-};
-    
+  });
+}};
+
+
+
+
+
+
+
 
 
 
