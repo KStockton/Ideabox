@@ -251,7 +251,7 @@ function show(){
     showMore.innerHTML = "show-more";
     bottomSection.innerHTML = "";
     var filtered = ideasCollection.slice(-10);
-    iltered.forEach(function(e){
+    filtered.forEach(function(e){
     appendCard(e);
 
     
