@@ -132,7 +132,9 @@ function loaded(){
 
     });
 
-     var filtered = ideasCollection.slice(-10);     
+     var filtered = ideasCollection.slice(-10);
+     console.log(filtered, "slice")
+     
      filtered.forEach(function(e){
 
        appendCard(e);
@@ -251,9 +253,9 @@ function show(){
     showMore.innerHTML = "show-more";
     bottomSection.innerHTML = "";
     var filtered = ideasCollection.slice(-10);
-    iltered.forEach(function(e){
-    appendCard(e);
+    filtered.forEach(function(e){
 
+       appendCard(e);
     
   });
 }};
