@@ -254,7 +254,6 @@ function show(){
     bottomSection.innerHTML = "";
     var filtered = ideasCollection.slice(-10);
     filtered.forEach(function(e){
-
        appendCard(e);
     
   });
