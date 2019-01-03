@@ -132,9 +132,7 @@ function loaded(){
 
     });
 
-     var filtered = ideasCollection.slice(-10);
-     console.log(filtered, "slice")
-     
+     var filtered = ideasCollection.slice(-10);     
      filtered.forEach(function(e){
 
        appendCard(e);
@@ -249,19 +247,13 @@ function show(){
     ideasCollection.forEach(function(e){
     appendCard(e);
     })
-    } 
-
-
-
-    else if(showMore.innerHTML == "show-less"){
+    } else if(showMore.innerHTML == "show-less"){
     showMore.innerHTML = "show-more";
     bottomSection.innerHTML = "";
     var filtered = ideasCollection.slice(-10);
-     console.log(filtered, "slice")
-     
-     filtered.forEach(function(e){
+    iltered.forEach(function(e){
+    appendCard(e);
 
-       appendCard(e);
     
   });
 }};
