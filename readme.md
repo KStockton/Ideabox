@@ -136,3 +136,10 @@ updateContent(text,type){
 
 # Complications
 Had trouble sending objects to local storage and re-assigining the objects with the functionality
+
+# Screenshots
+
+Our project with local storage
+![image](https://user-images.githubusercontent.com/34406483/50646722-03eb9e80-0f34-11e9-80dc-1a2f5c89981b.png)
+
+Turing Comp
